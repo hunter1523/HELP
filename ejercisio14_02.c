@@ -5,26 +5,34 @@
 
 int main (void)
 {
-  int i1=0, i2=0, m, n;
+  int i1=0, i2=0, m, n=0;
   int v[VALOR];
 
   printf(" Adivine el numero misterioso. \r \n \n \n");
 
   srand(time(NULL));
   m = rand() % 100;
-
-  while ((m!=v[i1]) && (i1<=VALOR)) {
+  
+  printf(" El numero misterioso es: \n %d \r \n", m);
+  
+      do {
         printf(" Ingrese un numero: \r \n");
         scanf ("%d", &v[i1]);
-        while ((i2 < VALOR) && (v[i2] != v[i1])) {
+        
+        while ((i2 < n) && (v[i2] != v[i1])) {
           i2 += 1;
         }
+        
         if (v[i2] != v[i1]) {
           i1 += 1;
         }else{
           printf(" Numero repetido. \n \n");
         }
-      }
+        
+        i2 = 0;
+        n += 1;
+      } while ((m!=v[i1]) && (i1<=VALOR));
+      
   if (m==v[i1]) {
     printf(" Felicidades acertaste el numero misterioso\r \n");
   } else {
